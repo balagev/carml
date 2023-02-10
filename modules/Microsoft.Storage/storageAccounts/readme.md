@@ -89,9 +89,9 @@ This module is used to deploy a storage account, with the ability to deploy 1 or
 | `queueServices` | _[queueServices](queueServices/readme.md)_ object | `{object}` |  | Queue service and queues to create. |
 | `requireInfrastructureEncryption` | bool | `True` |  | A Boolean indicating whether or not the service applies a secondary layer of encryption with platform managed keys for data at rest. For security reasons, it is recommended to set it to true. |
 | `roleAssignments` | array | `[]` |  | Array of role assignment objects that contain the 'roleDefinitionIdOrName' and 'principalId' to define RBAC role assignments on this resource. In the roleDefinitionIdOrName attribute, you can provide either the display name of the role definition, or its fully qualified ID in the following format: '/providers/Microsoft.Authorization/roleDefinitions/c2f4ef07-c644-48eb-af81-4b1b4947fb11'. |
-| `storageAccountAccessTier` | string | `'Hot'` | `[Cool, Hot, Premium]` | Storage Account Access Tier. |
-| `storageAccountKind` | string | `'StorageV2'` | `[BlobStorage, BlockBlobStorage, FileStorage, Storage, StorageV2]` | Type of Storage Account to create. |
-| `storageAccountSku` | string | `'Standard_GRS'` | `[Premium_LRS, Premium_ZRS, Standard_GRS, Standard_GZRS, Standard_LRS, Standard_RAGRS, Standard_RAGZRS, Standard_ZRS]` | Storage Account Sku Name. |
+| `accessTier` | string | `'Hot'` | `[Cool, Hot, Premium]` | Storage Account Access Tier. |
+| `kind` | string | `'StorageV2'` | `[BlobStorage, BlockBlobStorage, FileStorage, Storage, StorageV2]` | Type of Storage Account to create. |
+| `sku` | string | `'Standard_GRS'` | `[Premium_LRS, Premium_ZRS, Standard_GRS, Standard_GZRS, Standard_LRS, Standard_RAGRS, Standard_RAGZRS, Standard_ZRS]` | Storage Account Sku Name. |
 | `supportsHttpsTrafficOnly` | bool | `True` |  | Allows HTTPS traffic only to storage service if sets to true. |
 | `systemAssignedIdentity` | bool | `False` |  | Enables system assigned managed identity on the resource. |
 | `tableServices` | _[tableServices](tableServices/readme.md)_ object | `{object}` |  | Table service and tables to create. |
@@ -581,7 +581,7 @@ module storageAccounts './Microsoft.Storage/storageAccounts/deploy.bicep' = {
         roleDefinitionIdOrName: 'Reader'
       }
     ]
-    storageAccountSku: 'Standard_LRS'
+    sku: 'Standard_LRS'
     systemAssignedIdentity: true
     tableServices: {
       diagnosticEventHubAuthorizationRuleId: '<diagnosticEventHubAuthorizationRuleId>'
@@ -808,7 +808,7 @@ module storageAccounts './Microsoft.Storage/storageAccounts/deploy.bicep' = {
         }
       ]
     },
-    "storageAccountSku": {
+    "sku": {
       "value": "Standard_LRS"
     },
     "systemAssignedIdentity": {
@@ -877,7 +877,7 @@ module storageAccounts './Microsoft.Storage/storageAccounts/deploy.bicep' = {
       }
     ]
     requireInfrastructureEncryption: true
-    storageAccountSku: 'Standard_LRS'
+    sku: 'Standard_LRS'
     systemAssignedIdentity: false
     userAssignedIdentities: {
       '<managedIdentityResourceId>': {}
@@ -944,7 +944,7 @@ module storageAccounts './Microsoft.Storage/storageAccounts/deploy.bicep' = {
     "requireInfrastructureEncryption": {
       "value": true
     },
-    "storageAccountSku": {
+    "sku": {
       "value": "Standard_LRS"
     },
     "systemAssignedIdentity": {
@@ -1026,7 +1026,7 @@ module storageAccounts './Microsoft.Storage/storageAccounts/deploy.bicep' = {
     // Non-required parameters
     allowBlobPublicAccess: false
     enableDefaultTelemetry: '<enableDefaultTelemetry>'
-    storageAccountAccessTier: 'Premium'
+    accessTier: 'Premium'
   }
 }
 ```
@@ -1054,7 +1054,7 @@ module storageAccounts './Microsoft.Storage/storageAccounts/deploy.bicep' = {
     "enableDefaultTelemetry": {
       "value": "<enableDefaultTelemetry>"
     },
-    "storageAccountAccessTier": {
+    "accessTier": {
       "value": "Premium"
     }
   }
@@ -1102,8 +1102,8 @@ module storageAccounts './Microsoft.Storage/storageAccounts/deploy.bicep' = {
         roleDefinitionIdOrName: 'Reader'
       }
     ]
-    storageAccountKind: 'FileStorage'
-    storageAccountSku: 'Premium_LRS'
+    kind: 'FileStorage'
+    sku: 'Premium_LRS'
     supportsHttpsTrafficOnly: false
     systemAssignedIdentity: true
     userAssignedIdentities: {
@@ -1175,10 +1175,10 @@ module storageAccounts './Microsoft.Storage/storageAccounts/deploy.bicep' = {
         }
       ]
     },
-    "storageAccountKind": {
+    "kind": {
       "value": "FileStorage"
     },
-    "storageAccountSku": {
+    "sku": {
       "value": "Premium_LRS"
     },
     "supportsHttpsTrafficOnly": {
@@ -1214,7 +1214,7 @@ module storageAccounts './Microsoft.Storage/storageAccounts/deploy.bicep' = {
     // Non-required parameters
     allowBlobPublicAccess: false
     enableDefaultTelemetry: '<enableDefaultTelemetry>'
-    storageAccountKind: 'Storage'
+    kind: 'Storage'
   }
 }
 ```
@@ -1242,7 +1242,7 @@ module storageAccounts './Microsoft.Storage/storageAccounts/deploy.bicep' = {
     "enableDefaultTelemetry": {
       "value": "<enableDefaultTelemetry>"
     },
-    "storageAccountKind": {
+    "kind": {
       "value": "Storage"
     }
   }

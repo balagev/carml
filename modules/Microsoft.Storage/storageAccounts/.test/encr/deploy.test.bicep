@@ -52,7 +52,7 @@ module testDeployment '../../deploy.bicep' = {
   params: {
     enableDefaultTelemetry: enableDefaultTelemetry
     name: '<<namePrefix>>${serviceShort}001'
-    storageAccountSku: 'Standard_LRS'
+    sku: 'Standard_LRS'
     allowBlobPublicAccess: false
     requireInfrastructureEncryption: true
     privateEndpoints: [
