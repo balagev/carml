@@ -2,16 +2,16 @@
 param name string
 
 @description('Optional. The number of fault domains to use.')
-param availabilitySetFaultDomain int = 2
+param faultDomain int = 2
 
 @description('Optional. The number of update domains to use.')
-param availabilitySetUpdateDomain int = 5
+param updateDomain int = 5
 
 @description('''Optional. SKU of the availability set.
 - Use \'Aligned\' for virtual machines with managed disks.
 - Use \'Classic\' for virtual machines with unmanaged disks.
 ''')
-param availabilitySetSku string = 'Aligned'
+param sku string = 'Aligned'
 
 @description('Optional. Resource ID of a proximity placement group.')
 param proximityPlacementGroupId string = ''
@@ -53,14 +53,14 @@ resource availabilitySet 'Microsoft.Compute/availabilitySets@2021-07-01' = {
   location: location
   tags: tags
   properties: {
-    platformFaultDomainCount: availabilitySetFaultDomain
-    platformUpdateDomainCount: availabilitySetUpdateDomain
+    platformFaultDomainCount: faultDomain
+    platformUpdateDomainCount: updateDomain
     proximityPlacementGroup: !empty(proximityPlacementGroupId) ? {
       id: proximityPlacementGroupId
     } : null
   }
   sku: {
-    name: availabilitySetSku
+    name: sku
   }
 }
 

@@ -30,9 +30,9 @@ This template deploys an availability set
 
 | Parameter Name | Type | Default Value | Allowed Values | Description |
 | :-- | :-- | :-- | :-- | :-- |
-| `availabilitySetFaultDomain` | int | `2` |  | The number of fault domains to use. |
-| `availabilitySetSku` | string | `'Aligned'` |  | SKU of the availability set.<p>- Use \'Aligned\' for virtual machines with managed disks.<p>- Use \'Classic\' for virtual machines with unmanaged disks.<p> |
-| `availabilitySetUpdateDomain` | int | `5` |  | The number of update domains to use. |
+| `faultDomain` | int | `2` |  | The number of fault domains to use. |
+| `sku` | string | `'Aligned'` |  | SKU of the availability set.<p>- Use \'Aligned\' for virtual machines with managed disks.<p>- Use \'Classic\' for virtual machines with unmanaged disks.<p> |
+| `updateDomain` | int | `5` |  | The number of update domains to use. |
 | `enableDefaultTelemetry` | bool | `True` |  | Enable telemetry via a Globally Unique Identifier (GUID). |
 | `location` | string | `[resourceGroup().location]` |  | Resource location. |
 | `lock` | string | `''` | `['', CanNotDelete, ReadOnly]` | Specify the type of lock. |
